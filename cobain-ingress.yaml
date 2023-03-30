@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cobain-ingress
+spec:
+  rules:
+  - host: cilist.1011-wakeup.my.id
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-cilist
+            port:
+              name: http
+  - host: sosmed.1011-wakeup.my.id
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: cobain-sosmed
+            port:
+              name: http
+  - host: lp.1011-wakeup.my.id
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: cobain-landing-page
+            port:
+              name: http
